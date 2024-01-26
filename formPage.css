@@ -1,0 +1,54 @@
+:root {
+  --form-width: 20vw;
+  --form-spacing: 0.3rem;
+  --form-box-spacing: 5rem;
+}
+
+#formBox {
+  position: absolute;
+  top: 30vh;
+  left: calc(50vw - var(--form-width) - var(--form-box-spacing) / 2);
+  display: flex;
+  justify-content: space-between;
+  width: calc(var(--form-width) * 2 + var(--form-box-spacing));
+}
+
+#bigBonfire {
+  display: flex;
+  justify-content: center;
+  line-height: 30vh;
+}
+
+.bonFireLetters {
+  text-align: center;
+  font-family: var(--cursive-font);
+  font-style: italic;
+  font-size: 7rem;
+  letter-spacing: 2.5rem;
+}
+
+#loginForm p, #registerForm p {
+  font-family: var(--cursive-font);
+  font-size: 1.8rem;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+form {
+  width: var(--form-width);
+}
+
+form * {
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: var(--background-color);
+}
+
+input {
+  height: 3rem;
+  margin: var(--form-spacing) 0 var(--form-spacing) 0;
+  width: inherit;
+  text-align: center;
+  border-radius: 1rem;
+  border: 5px var(--primary-color) outset;
+}
