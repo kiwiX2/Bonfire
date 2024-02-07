@@ -7,6 +7,7 @@
         <meta name="description" content="Bonfire: a Discord-style messaging site">
         <link rel="stylesheet" href="shared.css">
         <link rel="stylesheet" href="formPage.css">
+        <link rel="stylesheet" href="defaultPage.css">
         <script type="text/javascript" src="anime.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -19,6 +20,7 @@
             include('register.php');
             include('login.php');
             include('logout.php');
+            include('defaultPage.php');
 
             if (isset($_SESSION['user_id'])) {
                 $isLoggedIn = true;
@@ -31,6 +33,9 @@
             }
 
             if (!$isLoggedIn) {
+                DisplayDefaultPage();
+
+                /*
                 ?>
                 <script type="text/javascript" src="loginPage.js" defer></script>
                 <?php
@@ -63,6 +68,7 @@
                 if (isset($_POST['register_button'])) {
                     Register();
                 }
+                */
             } else {
                 DisplayLogoutForm();
 
