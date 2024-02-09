@@ -1,34 +1,57 @@
+:root {
+	--global-padding: 0.5rem;
+
+	--dm-width: 30vw;
+	--dm-list-height: 80vh;
+	--own-profile-height: 20vh;
+
+	--friend-width: 70vw;
+	--friend-button-height: 10vh;
+	--friend-list-height: 90vh;
+}
+
 #siteContainer {
 	display: flex;
 	justify-content: space-evenly;
 }
 
 #dmColumn, #friendColumn {
-	background: white;
 	height: 100vh;
-	width: 50vw;
+}
+
+.globalStyle {
+	padding: var(--global-padding);
+	margin: var(--global-padding);
+	background: var(--background-color);
+	border: var(--global-padding) solid var(--secondary-color);
 }
 
 #dmColumn {
-
+	width: var(--dm-width);
 }
 
 #dmList {
-
+	margin-right: 0;
+	height: calc(var(--dm-list-height) - var(--global-padding) * 3);
 }
 
 #ownProfile {
-
+	margin-right: 0;
+	height: var(--own-profile-height);
 }
 
 #friendColumn {
-
+	width: var(--friend-width);
 }
 
-#addFriendButton {
+#addFriendContainer {
+	height: var(--friend-button-height);
+}
+
+#addFriendForm {
 
 }
 
 #friendList {
-
+	height: calc(var(--friend-list-height) - var(--global-padding) * 3);
 }

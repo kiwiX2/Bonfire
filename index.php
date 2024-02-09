@@ -6,8 +6,6 @@
         <link rel="icon" href="/bonfire/favicon.ico">
         <meta name="description" content="Bonfire: a Discord-style messaging site">
         <link rel="stylesheet" href="shared.css">
-        <link rel="stylesheet" href="formPage.css">
-        <link rel="stylesheet" href="defaultPage.css">
         <script type="text/javascript" src="anime.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -33,10 +31,15 @@
             }
 
             if (!$isLoggedIn) {
+                //Should be in else
+                ?>
+                <link rel="stylesheet" href="defaultPage.css">
+                <?php
                 DisplayDefaultPage();
 
                 /*
                 ?>
+                <link rel="stylesheet" href="formPage.css">
                 <script type="text/javascript" src="loginPage.js" defer></script>
                 <?php
                 echo '

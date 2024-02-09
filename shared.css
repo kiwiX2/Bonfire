@@ -10,6 +10,8 @@
 
   --monospace-font: "Share Tech Mono", monospace;
   --cursive-font: "Grape Nuts", cursive;
+
+  --form-spacing: 0.3rem;
 }
 
 * {
@@ -25,4 +27,19 @@ body {
   overflow: hidden;
   width: 100vw;
   height: 100vh;
+}
+
+form * {
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: var(--background-color);
+}
+
+input {
+  height: 3rem;
+  margin: var(--form-spacing) 0 var(--form-spacing) 0;
+  width: inherit;
+  text-align: center;
+  border-radius: 1rem;
+  border: 5px var(--primary-color) outset;
 }

@@ -1,6 +1,5 @@
 :root {
   --form-width: 20vw;
-  --form-spacing: 0.3rem;
   --form-box-spacing: 5rem;
 }
 
@@ -36,19 +35,4 @@
 
 form {
   width: var(--form-width);
-}
-
-form * {
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: var(--background-color);
-}
-
-input {
-  height: 3rem;
-  margin: var(--form-spacing) 0 var(--form-spacing) 0;
-  width: inherit;
-  text-align: center;
-  border-radius: 1rem;
-  border: 5px var(--primary-color) outset;
 }

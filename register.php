@@ -2,10 +2,10 @@
     function DisplayRegisterForm() {
         echo "
             <form id='registerForm' method='post'>
-            <p>Register an account</p>
-            <input type='text' name='name' placeholder='Username' required><br>
-            <input type='password' name='password' placeholder='Password' required><br>
-            <input type='submit' name='register_button' value='Register'>
+                <p>Register an account</p>
+                <input type='text' name='name' placeholder='Username' required><br>
+                <input type='password' name='password' placeholder='Password' required><br>
+                <input type='submit' name='register_button' value='Register'>
             </form>
         ";
     }

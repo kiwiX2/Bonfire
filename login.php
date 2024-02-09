@@ -2,10 +2,10 @@
 	function DisplayLoginForm() {
 		echo "
 			<form id='loginForm' method='post'>
-		    <p>Log in to your account</p>
-		    <input type='text' name='login_name' placeholder='Username' required><br>
-		    <input type='password' name='login_password' placeholder='Password'required><br>
-		    <input type='submit' name='login_button' value='Log in'>
+			    <p>Log in to your account</p>
+			    <input type='text' name='login_name' placeholder='Username' required><br>
+			    <input type='password' name='login_password' placeholder='Password'required><br>
+			    <input type='submit' name='login_button' value='Log in'>
         	</form>
         ";
 	}
