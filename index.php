@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Bonfire</title>
-        <link rel="icon" href="/bonfire/favicon.ico">
+        <link rel="icon" href="style/favicon.ico">
         <meta name="description" content="Bonfire: a Discord-style messaging site">
-        <link rel="stylesheet" href="shared.css">
-        <script type="text/javascript" src="anime.min.js"></script>
+        <link rel="stylesheet" href="style/shared.css">
+        <script type="text/javascript" src="scripts/anime.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
@@ -33,14 +33,14 @@
             if (!$isLoggedIn) {
                 //Should be in else
                 ?>
-                <link rel="stylesheet" href="defaultPage.css">
+                <link rel="stylesheet" href="style/defaultPage.css">
                 <?php
                 DisplayDefaultPage();
 
                 /*
                 ?>
-                <link rel="stylesheet" href="formPage.css">
-                <script type="text/javascript" src="loginPage.js" defer></script>
+                <link rel="stylesheet" href="style/formPage.css">
+                <script type="text/javascript" src="scripts/loginPage.js" defer></script>
                 <?php
                 echo '
                 <div id="bigBonfire">
