@@ -9,8 +9,8 @@
 				<div id='friendColumn'>
 					<div id='addFriendContainer' class='globalStyle'>
 						<form id='addFriendForm' method='post'>
-                			<input type='submit' name='add_button' value='Add Friend'>
-							<input type='text' name='friend_request_name' placeholder='Add friends with their Bonfire username.' required>
+                			<input type='submit' name='add_button' value='Add Friend' id='addFriendButton'>
+							<input type='text' name='friend_request_name' placeholder='Add friends with their Bonfire username.' required id='addFriendText'>
 						</form>
 					</div>
 					<div id='friendList' class='globalStyle'></div>

@@ -8,6 +8,7 @@
 	--friend-width: 70vw;
 	--friend-button-height: 10vh;
 	--friend-list-height: 90vh;
+	--friend-button-width: 10vw;
 }
 
 #siteContainer {
@@ -23,6 +24,7 @@
 	padding: var(--global-padding);
 	margin: var(--global-padding);
 	background: var(--background-color);
+	border-radius: var(--border-radius);
 	border: var(--global-padding) solid var(--secondary-color);
 }
 
@@ -46,10 +48,22 @@
 
 #addFriendContainer {
 	height: var(--friend-button-height);
+	display: flex;
+	justify-content: space-evenly;
 }
 
 #addFriendForm {
+	margin: 0;
+}
 
+#addFriendButton {
+	margin: 0;
+}
+
+#addFriendText {
+	width: calc(var(--friend-width) - var(--friend-button-width) - 
+		var(--form-spacing) * 4 - var(--form-padding) * 2.1
+	);
 }
 
 #friendList {

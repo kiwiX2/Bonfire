@@ -12,6 +12,9 @@
   --cursive-font: "Grape Nuts", cursive;
 
   --form-spacing: 0.3rem;
+  --form-padding: 0.3rem;
+
+  --border-radius: 1rem;
 }
 
 * {
@@ -37,9 +40,10 @@ form * {
 
 input {
   height: 3rem;
+  padding: var(--form-padding);
   margin: var(--form-spacing) 0 var(--form-spacing) 0;
   width: inherit;
   text-align: center;
-  border-radius: 1rem;
+  border-radius: var(--border-radius);
   border: 5px var(--primary-color) outset;
 }
