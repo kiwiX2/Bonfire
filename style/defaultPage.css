@@ -2,13 +2,19 @@
 	--global-padding: 0.5rem;
 
 	--dm-width: 30vw;
-	--dm-list-height: 80vh;
-	--own-profile-height: 20vh;
+	--dm-list-height: 85vh;
+	--own-profile-height: 15vh;
 
 	--friend-width: 70vw;
 	--friend-button-height: 10vh;
 	--friend-list-height: 90vh;
 	--friend-button-width: 10vw;
+
+	--name-height: 3rem;
+	--profile-item-margin: 1rem;
+	--profile-item-height: calc(calc(var(--own-profile-height)) - var(--profile-item-margin) * 2);
+
+	--filter-friends-width: 10%;
 }
 
 #siteContainer {
@@ -40,6 +46,52 @@
 #ownProfile {
 	margin-right: 0;
 	height: var(--own-profile-height);
+	display: flex;
+	gap: 0.5rem;
+}
+
+#peefpContainer {
+	height: var(--profile-item-height);
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+}
+
+#peefpName {
+	position: relative;
+	top: calc(50% - var(--name-height) / 2);
+	height: var(--name-height);
+	width: calc(var(--dm-width) - var(--profile-item-height));
+	border-radius: var(--border-radius);
+}
+
+.icon-input-btn {
+    display: inline-block;
+    position: relative;
+    width: var(--input-height);
+}
+
+i {
+	pointer-events: none;
+}
+
+.icon-input-btn .fa-solid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    font-size: 1.5rem;
+}
+
+#logoutButton input {
+	position: relative;
+	background-color: rgba(0, 0, 0, 0);
+	z-index: 1;
+	cursor: pointer;
+}
+
+#logoutButton {
+	aspect-ratio: 1/3;
+	line-height: calc(var(--own-profile-height) - var(--form-spacing) * 2 - var(--form-padding) * 2 - var(--border-radius));
 }
 
 #friendColumn {
@@ -68,4 +120,30 @@
 
 #friendList {
 	height: calc(var(--friend-list-height) - var(--global-padding) * 3);
+}
+
+#filterFriends {
+	margin-left: var(--form-spacing);
+	display: flex;
+	justify-content: left;
+}
+
+.filterForm {
+	display: flex;
+	justify-content: center;
+	width: calc(var(--filter-friends-width) - 1rem);
+	margin: var(--form-spacing);
+	border-radius: var(--border-radius);
+	border: var(--border-semi-important);
+}
+ 
+.filterFormInput {
+	border: none;
+	height: inherit;
+	width: initial;
+}
+
+.filterFormInput {
+  padding: 0;
+  margin: 0.3rem;
 }

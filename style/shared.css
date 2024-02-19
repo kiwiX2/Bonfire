@@ -15,6 +15,10 @@
   --form-padding: 0.3rem;
 
   --border-radius: 1rem;
+  --border-important: 5px var(--primary-color) outset;
+  --border-semi-important: 3px var(--primary-color) outset;
+
+  --input-height: 3rem;
 }
 
 * {
@@ -39,11 +43,18 @@ form * {
 }
 
 input {
-  height: 3rem;
-  padding: var(--form-padding);
   margin: var(--form-spacing) 0 var(--form-spacing) 0;
   width: inherit;
   text-align: center;
   border-radius: var(--border-radius);
-  border: 5px var(--primary-color) outset;
+  border: var(--border-important);
+}
+
+input {
+  height: var(--input-height);
+  padding: var(--form-padding);
+}
+
+input, #peefpName, #peefpContainer {
+  border: var(--border-important);
 }
