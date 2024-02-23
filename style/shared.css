@@ -5,7 +5,7 @@
   --text-color: #eee6f3;
   --background-color: #0e0812;
   --primary-color: #d394ff;
-  --secondary-color: #3a134e;
+  --secondary-color: #341146;
   --accent-color: #ff84bb;
 
   --monospace-font: "Share Tech Mono", monospace;
@@ -15,8 +15,8 @@
   --form-padding: 0.3rem;
 
   --border-radius: 1rem;
-  --border-important: 5px var(--primary-color) outset;
-  --border-semi-important: 3px var(--primary-color) outset;
+  --border-important: 4px var(--primary-color) outset;
+  --border-semi-important: 2px var(--primary-color) outset;
 
   --input-height: 3rem;
 }
