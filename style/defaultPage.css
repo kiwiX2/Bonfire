@@ -7,7 +7,7 @@
 
 	--friend-width: 70vw;
 	--friend-button-height: 10vh;
-	--friend-list-height: 90vh;
+	--friend-list-height: 83vh;
 	--friend-button-width: 10vw;
 
 	--name-height: 3rem;
@@ -47,11 +47,13 @@
 	margin-right: 0;
 	height: var(--own-profile-height);
 	display: flex;
+	justify-content: center;
 	gap: 0.5rem;
 }
 
 #peefpContainer {
-	height: var(--profile-item-height);
+	margin: auto;
+	height: calc(var(--own-profile-height) - 40%);
 	aspect-ratio: 1/1;
 	border-radius: 50%;
 }
@@ -99,13 +101,14 @@ i {
 }
 
 #addFriendContainer {
-	height: var(--friend-button-height);
+	height: calc(var(--friend-button-height) * 1.45);
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 }
 
 #addFriendForm {
 	margin: 0;
+	width: 100%;
 }
 
 #addFriendButton {
@@ -113,17 +116,14 @@ i {
 }
 
 #addFriendText {
-	width: calc(var(--friend-width) - var(--friend-button-width) - 
-		var(--form-spacing) * 4 - var(--form-padding) * 2.1
-	);
+	width: inherit;
 }
 
 #friendList {
-	height: calc(var(--friend-list-height) - var(--global-padding) * 3);
+	height: var(--friend-list-height);
 }
 
 #filterFriends {
-	margin-left: var(--form-spacing);
 	display: flex;
 	justify-content: left;
 }
@@ -132,7 +132,8 @@ i {
 	display: flex;
 	justify-content: center;
 	width: calc(var(--filter-friends-width) - 1rem);
-	margin: var(--form-spacing);
+	padding: 0 40px 0 40px;
+	margin: var(--form-spacing) var(--form-spacing) var(--form-spacing) 0;
 	border-radius: var(--border-radius);
 	border: var(--border-semi-important);
 }
@@ -141,9 +142,4 @@ i {
 	border: none;
 	height: inherit;
 	width: initial;
-}
-
-.filterFormInput {
-  padding: 0;
-  margin: 0.3rem;
 }

@@ -3,7 +3,11 @@
 		echo "
 			<div id='siteContainer'>
 				<div id='dmColumn'>
-					<div id='dmList' class='globalStyle'></div>
+					<div id='dmList' class='globalStyle'>
+						<h3>Direct messages</h3>
+						<hr>
+						<!-- Friends fetch from database! -->
+					</div>
 					<div id='ownProfile' class='globalStyle'>
 						<div id='peefpContainer'>";
 							// Profile pic fetch from database!
@@ -22,6 +26,8 @@
 						</form>
 					</div>
 					<div id='friendList' class='globalStyle'>
+						<h3>Friends</h3>
+						<hr>
 						<div id='filterFriends'>
 							<form class='filterForm' method='post'>
 								<input type='submit' name='online_filter' value='Online' class='filterFormInput'>
@@ -35,7 +41,7 @@
 							<form class='filterForm' method='post'>
 								<input type='submit' name='blocked_filter' value='Blocked' class='filterFormInput'>
 							</form>
-						<div>
+						</div>
 					</div>
 				</div>
 			</div>
