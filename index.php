@@ -20,9 +20,14 @@
             include('login.php');
             include('logout.php');
             include('defaultPage.php');
+            include('friendship.php');
 
             if (isset($_SESSION['user_id'])) {
                 $isLoggedIn = true;
+
+                if (isset($_POST['add_button'])) {
+                    AddFriend();
+                }
 
                 if (isset($_POST['rate_button'])) {
                     RateTeacher(); 
@@ -70,6 +75,10 @@
                 <link rel="stylesheet" href="style/defaultPage.css">
                 <?php
                 DisplayDefaultPage();
+
+                if (isset($_POST['add_button'])) {
+                    //addFriend();
+                }
 
                 if (isset($_POST['logout_button'])) {
                     session_destroy();

@@ -1,11 +1,11 @@
 :root {
 	--global-padding: 0.5rem;
 
-	--dm-width: 30vw;
+	--dm-width: 400px;
 	--dm-list-height: 85vh;
 	--own-profile-height: 15vh;
 
-	--friend-width: 70vw;
+	--friend-width: calc(100vw - 400px);
 	--friend-button-height: 10vh;
 	--friend-list-height: 83vh;
 	--friend-button-width: 10vw;
@@ -52,7 +52,7 @@
 }
 
 #peefpContainer {
-	margin: auto;
+	margin: auto 0 auto 0;
 	height: calc(var(--own-profile-height) - 40%);
 	aspect-ratio: 1/1;
 	border-radius: 50%;
@@ -60,9 +60,9 @@
 
 #peefpName {
 	position: relative;
+	padding: 0.75rem;
 	top: calc(50% - var(--name-height) / 2);
 	height: var(--name-height);
-	width: calc(var(--dm-width) - var(--profile-item-height));
 	border-radius: var(--border-radius);
 }
 
@@ -72,7 +72,7 @@
 
 #logoutButton input {
 	position: relative;
-	top: calc(50% - var(--input-height) / 2 - var(--form-padding));
+	top: calc(var(--form-padding) / 4);
 	background-color: rgba(0, 0, 0, 0);
 	z-index: 1;
 	cursor: pointer;
@@ -91,7 +91,7 @@ i {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-40%) translateX(-60%);
     font-size: 1.5rem;
 }
 
@@ -124,6 +124,7 @@ i {
 
 #filterFriends {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: left;
 }
 
