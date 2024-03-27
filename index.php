@@ -18,6 +18,7 @@
             include('connection.php');
             include('defaultPage.php');
             include('friendship.php');
+            include('customization.php');
 
             if (isset($_SESSION['user_id'])) {
                 $isLoggedIn = true;

@@ -13,8 +13,13 @@
 				</div>
 				<div id='ownProfile' class='globalStyle'>
 					<div id='peefpContainer'>
-						<img id='ownImage' src='" . $_SESSION['picture'] . "'/>
-					</div>
+					<img id='ownImage' src='";
+						if ($_SESSION['picture'] != null) {
+							echo "" . $_SESSION['picture'] . "";
+						} else {
+							echo "style/defaultPfp.jpg";
+						}
+					echo "'/> </div>
 					<p id='peefpName'>" . $_SESSION['username'] . "</p>";
 					DisplayLogoutForm();
 				echo "</div>
