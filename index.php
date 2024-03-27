@@ -15,23 +15,16 @@
             ob_start();
             session_start();
 
-            include('config.php');
-            include('register.php');
-            include('login.php');
-            include('logout.php');
+            include('connection.php');
             include('defaultPage.php');
             include('friendship.php');
 
             if (isset($_SESSION['user_id'])) {
                 $isLoggedIn = true;
-
-                if (isset($_POST['add_button'])) {
-                    AddFriend();
-                }
-
-                if (isset($_POST['rate_button'])) {
-                    RateTeacher(); 
-                }
+                if (isset($_POST['add_button'])) { AddFriend(); }
+                if (isset($_POST['rate_button'])) { RateTeacher(); }
+                if (isset($_POST['friend_list_button'])) { DisplayFriendList(); }
+                if (isset($_POST['edit_profile_button'])) { DisplayProfileEditor(); }
             } else {
                 $isLoggedIn = false;
             }
@@ -41,18 +34,8 @@
                 <link rel="stylesheet" href="style/formPage.css">
                 <script type="text/javascript" src="scripts/loginPage.js" defer></script>
                 <?php
-                echo '
-                <div id="bigBonfire">
-                    <span class="bonFireLetters">B</span>
-                    <span class="bonFireLetters">o</span>
-                    <span class="bonFireLetters">n</span>
-                    <span class="bonFireLetters">f</span>
-                    <span class="bonFireLetters">i</span>
-                    <span class="bonFireLetters">r</span>
-                    <span class="bonFireLetters">e</span>
-                </div>
-
-                <div id="formBox">';
+                DisplayLogo();
+                echo '<div id="formBox">';
                     DisplayLoginForm();
                     DisplayRegisterForm();
                 echo '</div>';

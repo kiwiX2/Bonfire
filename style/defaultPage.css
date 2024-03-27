@@ -43,6 +43,19 @@
 	height: calc(var(--dm-list-height) - var(--global-padding) * 3);
 }
 
+#menuSelectorContainer {
+	position: relative;
+	top: 88%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.menuSelectorButton {
+	width: 40%;
+	text-align: center;
+	line-height: 200%;
+}
+
 #ownProfile {
 	margin-right: 0;
 	height: var(--own-profile-height);
@@ -53,9 +66,10 @@
 
 #peefpContainer {
 	margin: auto 0 auto 0;
-	height: calc(var(--own-profile-height) - 40%);
+	height: 90%;
 	aspect-ratio: 1/1;
 	border-radius: 50%;
+	overflow: hidden;
 }
 
 #peefpName {
@@ -118,7 +132,7 @@ i {
 	width: inherit;
 }
 
-#friendList {
+#friendList, #profileEditor {
 	height: var(--friend-list-height);
 }
 
@@ -142,4 +156,13 @@ i {
 	border: none;
 	height: inherit;
 	width: initial;
+}
+
+#profileForm input {
+	color: gray;
+	font-weight: 400;
+}
+
+#ownImage {
+	height: 100%;
 }
