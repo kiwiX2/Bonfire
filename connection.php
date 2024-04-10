@@ -76,6 +76,7 @@
             $_SESSION['picture'] = $picture;
         }
 
+
         mysqli_close($link);
     }
 
@@ -89,5 +90,22 @@
                 </span>
             </form>
         ";
+    }
+
+    function NameIsDuplicate(string $username_val) {
+        $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        
+        if (!empty($username_val)) {
+            // Check if the username already exists in the database
+            $stmt = $link->prepare("SELECT * FROM users WHERE username=?");
+            $stmt->bind_param("s", $username_val);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                // Username already exists
+                return true; 
+            }
+        }
     }
 ?>

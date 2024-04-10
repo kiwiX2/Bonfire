@@ -14,7 +14,7 @@ bonfireletters.forEach((letter, i) => {
 });
 
 function animateText(letter, i) {
-  if (isAnimating[i]) {return;}
+  if (isAnimating[i]) { return; }
 
   isAnimating[i] = true;
   anime({

@@ -30,6 +30,10 @@
   font-family: var(--monospace-font);
 }
 
+.error {
+  position: absolute;
+}
+
 body {
   overflow: hidden;
   width: 100vw;

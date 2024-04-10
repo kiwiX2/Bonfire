@@ -13,15 +13,15 @@
 				</div>
 				<div id='ownProfile' class='globalStyle'>
 					<div id='peefpContainer'>
-					<img id='ownImage' src='";
-						if ($_SESSION['picture'] != null) {
-							echo "" . $_SESSION['picture'] . "";
-						} else {
-							echo "style/defaultPfp.jpg";
-						}
+						<img id='ownImage' src='";
+							if ($_SESSION['picture'] != null) {
+								echo "" . $_SESSION['picture'] . "";
+							} else {
+								echo "style/defaultPfp.jpg";
+							}
 					echo "'/> </div>
-					<p id='peefpName'>" . $_SESSION['username'] . "</p>";
-					DisplayLogoutForm();
+						<p id='peefpName'>" . $_SESSION['username'] . "</p>";
+						DisplayLogoutForm();
 				echo "</div>
 			</div>
 			<div id='friendColumn'>
@@ -61,11 +61,12 @@
 	function DisplayProfileEditor() {
 		echo "<div id='profileEditor' class='globalStyle'>
 			<h3>Edit User Profile</h3>
-			<form id='profileForm'>
+			<form id='profileForm' method='post' onsubmit='UpdateUsername()'>
 				<p>Username</p>
-				<input type='text' name='username' value='John Name'>
+				<input type='text' name='username_value' placeholder='John Name'>
 				<p>Profile Color</p>
-				<input type='text' name='color' value='#000000'>
+				<input type='text' name='color_value' placeholder='#000000'>
+				<input type='submit' name='submit_changes_button' value='Save Changes'>
 			</form>
 		</div>";
 	}
