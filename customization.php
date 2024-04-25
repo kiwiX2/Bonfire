@@ -1,5 +1,3 @@
-<script type="text/javascript" src="scripts/script.js" defer></script>
-
 <?php 
 	$error_message = "";
 

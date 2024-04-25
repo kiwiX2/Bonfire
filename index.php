@@ -24,8 +24,6 @@
                 $isLoggedIn = true;
                 if (isset($_POST['add_button'])) { AddFriend(); }
                 if (isset($_POST['rate_button'])) { RateTeacher(); }
-                if (isset($_POST['friend_list_button'])) { DisplayFriendList(); }
-                if (isset($_POST['edit_profile_button'])) { DisplayProfileEditor(); }
                 if (isset($_POST['submit_changes_button'])) { ChangeName(); ChangeColor(); }
             } else {
                 $isLoggedIn = false;

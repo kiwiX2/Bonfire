@@ -5,8 +5,7 @@
 				<div id='dmList' class='globalStyle'>
 					<h3>Direct Messages</h3>
 					<hr>
-					<!-- Friends fetch from database! -->
-					<form id='menuSelectorContainer'>
+					<form id='menuSelectorContainer' method='post'>
 						<input type='submit' name='friend_list_button' value='Friend List'>
 						<input type='submit' name='edit_profile_button' value='Edit Profile'>
 					</form>
@@ -31,8 +30,12 @@
 						<input type='text' name='friend_request_name' placeholder='Add friends with their Bonfire username.' required id='addFriendText'>
 					</form>
 				</div>";
-				//DisplayFriendList();
-				DisplayProfileEditor();
+                
+                if (isset($_POST['edit_profile_button'])) { 
+                	DisplayProfileEditor(); 
+                } else {
+                	DisplayFriendList();
+                }
 			echo "</div>
 		</div>";
 	}
@@ -43,24 +46,29 @@
 			<hr>
 			<div id='filterFriends'>
 				<form class='filterForm' method='post'>
-					<input type='submit' name='online_filter' value='Online' class='filterFormInput'>
-				</form>
-				<form class='filterForm' method='post'>
-					<input type='submit' name='all_filter' value='All' class='filterFormInput'>
+					<input type='submit' name='all_filter' value='All Friends' class='filterFormInput'>
 				</form>
 				<form class='filterForm' method='post'>
 					<input type='submit' name='pending_filter' value='Pending' class='filterFormInput'>
 				</form>
-				<form class='filterForm' method='post'>
-					<input type='submit' name='blocked_filter' value='Blocked' class='filterFormInput'>
-				</form>
-			</div>
-		</div>";
+			</div>";
+
+			if (isset($_POST['pending_filter'])) { 
+				DisplayPending(); 
+			} else {
+				DisplayAllFriends();
+			}
+		echo "</div>";
+	}
+
+	function DisplayAllFriends() {
+
 	}
 
 	function DisplayProfileEditor() {
 		echo "<div id='profileEditor' class='globalStyle'>
 			<h3>Edit User Profile</h3>
+			<hr>
 			<form id='profileForm' method='post' onsubmit='UpdateUsername()'>
 				<p>Username</p>
 				<input type='text' name='username_value' placeholder='John Name'>
