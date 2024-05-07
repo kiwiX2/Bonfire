@@ -30,26 +30,25 @@
         $stmt = $link->prepare("SELECT user_one_id, user_two_id FROM friends WHERE (user_one_id = ? OR user_two_id = ?) AND pending = 1");
         $stmt->bind_param('ii', $_SESSION['user_id'], $_SESSION['user_id']);
         $stmt->execute();
-        $stmt->bind_result($id_one, $id_two);
-        $stmt->fetch();
+        $result = $stmt->get_result();
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
 	    $stmt->close();
 
-        if ($id_one == $_SESSION['user_id']) {
-        	$friendId = $id_two;
-        } else {
-        	$friendId = $id_one;
-        }
-
-        if ($id_one != null) {
-	        $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-	        $stmt = $link->prepare("SELECT username FROM users WHERE id = $friendId");
-	        $stmt->execute();
-	        $stmt->bind_result($pendingFriendUsername);
-	        $stmt->fetch();
-		    $stmt->close();
+        foreach ($rows as $row) {
+        	$friendId = ($row['user_one_id'] == $_SESSION['user_id']) 
+        		? $row['user_two_id'] 
+        		: $row['user_one_id'];	
+		
+	        $stmt2 = $link->prepare("SELECT username FROM users WHERE id = ?");
+	        $stmt2->bind_param('i', $friendId);
+	        $stmt2->execute();
+	        $stmt2->bind_result($pendingFriendUsername);
+	        $stmt2->fetch();
+		    $stmt2->close();
 
 	        echo "<p class='error'>" . $pendingFriendUsername . "</p>";
         }
-
+	    
+        mysqli_close($link);
 	}
 ?>
