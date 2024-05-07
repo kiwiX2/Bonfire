@@ -54,15 +54,11 @@
 			</div>";
 
 			if (isset($_POST['pending_filter'])) { 
-				DisplayPending(); 
+				DisplayFriends($pending = 1);
 			} else {
-				DisplayAllFriends();
+				DisplayFriends($pending = 0);
 			}
 		echo "</div>";
-	}
-
-	function DisplayAllFriends() {
-
 	}
 
 	function DisplayProfileEditor() {

@@ -22,7 +22,7 @@
 
             if (isset($_SESSION['user_id'])) {
                 $isLoggedIn = true;
-                if (isset($_POST['add_button'])) { AddFriend(); }
+                if (isset($_POST['add_button'])) { FriendRequest(); }
                 if (isset($_POST['rate_button'])) { RateTeacher(); }
                 if (isset($_POST['submit_changes_button'])) { ChangeName(); ChangeColor(); }
             } else {
