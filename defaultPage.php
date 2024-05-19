@@ -33,11 +33,37 @@
                 
                 if (isset($_POST['edit_profile_button'])) { 
                 	DisplayProfileEditor(); 
+                } else if (isset($_POST['DMSelector'])) {
+                	$username = $_POST['DMSelector'];
+                	DisplayDM($username);
                 } else {
                 	DisplayFriendList();
                 }
 			echo "</div>
 		</div>";
+	}
+
+	function DisplayDM($username) {
+		echo "<div id='messageChannel' class='globalStyle'>
+			<h2>$username</h3>
+			<hr>";
+
+			//FETCH ALL MESSAGES AND DISPLAY THEM HERE
+
+
+			echo "<form id='sendMessage' method='post'>
+				<input type='text' name='message' placeholder='Message $username'>
+			</form>"; 
+
+			if (isset($_POST['message'])) {
+                $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                $stmt = $link->prepare("INSERT INTO messages (sender_id, receiver_id, pending, message) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param('iis', 8, 9, 0, "yo");
+                $stmt->execute();
+
+                mysqli_close($link);
+            }
+		echo "</div>";
 	}
 
 	function DisplayFriendList() {

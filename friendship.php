@@ -63,15 +63,19 @@
         	$friendId = ($row['user_one_id'] == $_SESSION['user_id']) 
         		? $row['user_two_id'] 
         		: $row['user_one_id'];
+
+        	$_SESSION['friend_id'] = $friendId;
 		
 	        $stmt2 = $link->prepare("SELECT username FROM users WHERE id = ?");
 	        $stmt2->bind_param('i', $friendId);
 	        $stmt2->execute();
-	        $stmt2->bind_result($pendingFriendUsername);
+	        $stmt2->bind_result($thisFriendUsername);
 	        $stmt2->fetch();
 		    $stmt2->close();
 
-	        echo "<p class='error'>" . $pendingFriendUsername . "</p>";
+	        echo "<form class='DMSelector' method='post'>
+					<input type='submit' name='DMSelector' value='$thisFriendUsername' class=''>
+			</form>";
         }
 	    
         mysqli_close($link);

@@ -59,10 +59,6 @@
                 <?php
                 DisplayDefaultPage();
 
-                if (isset($_POST['add_button'])) {
-                    //addFriend();
-                }
-
                 if (isset($_POST['logout_button'])) {
                     session_destroy();
                     unset($_SESSION['user_id']);
