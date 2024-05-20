@@ -25,6 +25,7 @@
                 if (isset($_POST['add_button'])) { FriendRequest(); }
                 if (isset($_POST['rate_button'])) { RateTeacher(); }
                 if (isset($_POST['submit_changes_button'])) { ChangeName(); ChangeColor(); }
+                if (isset($_POST['message'])) { SendMessage(); }
             } else {
                 $isLoggedIn = false;
             }

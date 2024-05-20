@@ -34,8 +34,8 @@
                 if (isset($_POST['edit_profile_button'])) { 
                 	DisplayProfileEditor(); 
                 } else if (isset($_POST['DMSelector'])) {
-                	$username = $_POST['DMSelector'];
-                	DisplayDM($username);
+                	$_SESSION['DMUsername'] = $_POST['DMSelector'];
+                	DisplayDM();
                 } else {
                 	DisplayFriendList();
                 }
@@ -43,27 +43,18 @@
 		</div>";
 	}
 
-	function DisplayDM($username) {
+	function DisplayDM() {
+		$username = $_SESSION['username'];
 		echo "<div id='messageChannel' class='globalStyle'>
 			<h2>$username</h3>
 			<hr>";
 
 			//FETCH ALL MESSAGES AND DISPLAY THEM HERE
 
-
 			echo "<form id='sendMessage' method='post'>
 				<input type='text' name='message' placeholder='Message $username'>
-			</form>"; 
-
-			if (isset($_POST['message'])) {
-                $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-                $stmt = $link->prepare("INSERT INTO messages (sender_id, receiver_id, pending, message) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param('iis', 8, 9, 0, "yo");
-                $stmt->execute();
-
-                mysqli_close($link);
-            }
-		echo "</div>";
+			</form>
+		</div>";
 	}
 
 	function DisplayFriendList() {
@@ -99,5 +90,40 @@
 				<input type='submit' name='submit_changes_button' value='Save Changes'>
 			</form>
 		</div>";
+	}
+
+	function SendMessage() {
+		$link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		$username = $_SESSION['DMUsername'];
+
+		$stmt = $link->prepare("SELECT id FROM users WHERE username = ?");
+	    $stmt->bind_param('s', $username);
+	    $stmt->execute();
+	    $stmt->bind_result($thisFriendId);
+	    $stmt->fetch();
+	    $stmt->close();
+
+	    $friendId = $thisFriendId;
+		$senderId = $_SESSION['user_id'];
+
+		$newMessage = [
+			'message' => $_POST['message'],
+			'senderId' => $senderId
+		];
+
+		$stmt = $link->prepare("SELECT messages FROM friends WHERE (user_one_id = ? AND user_two_id = ?) OR (user_one_id = ? AND user_two_id = ?)");
+		$stmt->bind_param('iiii', $senderId, $friendId, $friendId, $senderId);
+		$stmt->execute();
+		$result = $stmt->get_result()->fetch_assoc();
+
+		$messages = isset($result['messages'])? json_decode($result['messages'], true) : [];
+		$messages[] = $newMessage;
+		$updatedMessages = json_encode($messages);
+
+		$stmt = $link->prepare("UPDATE friends SET messages = ? WHERE (user_one_id = ? AND user_two_id = ?) OR (user_one_id = ? AND user_two_id = ?)");
+		$stmt->bind_param('siiii', $updatedMessages, $senderId, $friendId, $friendId, $senderId);
+		$stmt->execute();
+
+	    mysqli_close($link);
 	}
 ?>

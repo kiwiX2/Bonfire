@@ -41,8 +41,10 @@
 	        $stmt->close();
 	    } else {
 	        //Add a friend as pending
-	        $stmt = $link->prepare("INSERT INTO friends (user_one_id, user_two_id, pending) VALUES (?, ?, ?)");
-	        $stmt->bind_param('iii', $currentUserId, $friendId, 1);
+	        $pending = 1;
+	        $null = NULL;
+	        $stmt = $link->prepare("INSERT INTO friends (user_one_id, user_two_id, pending, messages) VALUES (?, ?, ?, ?)");
+	        $stmt->bind_param('iiis', $currentUserId, $friendId, $pending, $null);
 	        $stmt->execute();
 	        $stmt->close();
 	    }
