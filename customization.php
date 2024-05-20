@@ -13,6 +13,8 @@
 	        $stmt->execute();
 			$stmt->close();
         	mysqli_close($link);
+
+        	$_SESSION['username'] = $username_value;
         } else {
         	$error_message .= "Please enter a unique username. ";
         }

@@ -176,6 +176,11 @@ i {
 }
 
 #sendMessage {
-	position: relative;
-	top: 88%;
+	position: absolute;
+	top: 91%;
+	width: calc(var(--friend-width) - 50px);
+}
+
+#sendMessage input {
+	width: 100%;
 }

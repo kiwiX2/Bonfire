@@ -82,4 +82,73 @@
 	    
         mysqli_close($link);
 	}
+
+	function GetFriendId($username) {
+		$link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		$stmt = $link->prepare("SELECT id FROM users WHERE username = ?");
+	    $stmt->bind_param('s', $username);
+	    $stmt->execute();
+	    $stmt->bind_result($thisFriendId);
+	    $stmt->fetch();
+	    $stmt->close();
+
+	    return $friendId = $thisFriendId;
+	}
+
+		function SendMessage() {
+		$link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		$username = $_SESSION['DMUsername'];
+
+		$friendId = GetFriendId($username);
+		$senderId = $_SESSION['user_id'];
+
+		$newMessage = [
+			'message' => $_POST['message'],
+			'senderId' => $senderId
+		];
+
+		$stmt = $link->prepare("SELECT messages FROM friends WHERE (user_one_id = ? AND user_two_id = ?) OR (user_one_id = ? AND user_two_id = ?)");
+		$stmt->bind_param('iiii', $senderId, $friendId, $friendId, $senderId);
+		$stmt->execute();
+		$result = $stmt->get_result()->fetch_assoc();
+
+		$messages = isset($result['messages'])? json_decode($result['messages'], true) : [];
+		$messages[] = $newMessage;
+		$updatedMessages = json_encode($messages);
+
+		$stmt = $link->prepare("UPDATE friends SET messages = ? WHERE (user_one_id = ? AND user_two_id = ?) OR (user_one_id = ? AND user_two_id = ?)");
+		$stmt->bind_param('siiii', $updatedMessages, $senderId, $friendId, $friendId, $senderId);
+		$stmt->execute();
+
+	    mysqli_close($link);
+	}
+
+	function DisplayAllMessages() {
+		$link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+		$username = $_SESSION['DMUsername'];
+		$friendId = GetFriendId($username);
+		$myId = $_SESSION['user_id'];
+
+		$stmt = $link->prepare("SELECT messages FROM friends WHERE (user_one_id = ? AND user_two_id = ?) OR (user_one_id = ? AND user_two_id = ?)");
+		$stmt->bind_param('iiii', $myId, $friendId, $friendId, $myId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+
+		while ($row = $result->fetch_assoc()) {
+			$messageArray = json_decode($row['messages'], true);
+			if ($messageArray) {		
+				foreach ($messageArray as $message) {
+					$stmt2 = $link->prepare("SELECT username FROM users WHERE id = ?");
+					$stmt2->bind_param('i', $message['senderId']);
+					$stmt2->execute();
+					$senderUsername = $stmt2->get_result()->fetch_assoc()['username'];
+
+					echo $senderUsername . "<br>" . $message['message']	. "<br> <br>";
+				}
+			}
+		}
+	    
+	    mysqli_close($link);
+	}
 ?>

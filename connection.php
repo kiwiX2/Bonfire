@@ -10,7 +10,7 @@
         echo "
             <form id='registerForm' method='post'>
                 <p>Register an account</p>
-                <input type='text' name='name' placeholder='Username' required><br>
+                <input type='text' name='name' placeholder='Username' required autocomplete='off'><br>
                 <input type='password' name='password' placeholder='Password' required><br>
                 <input type='submit' name='register_button' value='Register'>
             </form>
@@ -49,7 +49,7 @@
         echo "
             <form id='loginForm' method='post'>
                 <p>Log in to your account</p>
-                <input type='text' name='login_name' placeholder='Username' required><br>
+                <input type='text' name='login_name' placeholder='Username' required autocomplete='off'><br>
                 <input type='password' name='login_password' placeholder='Password'required><br>
                 <input type='submit' name='login_button' value='Log in'>
             </form>
