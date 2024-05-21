@@ -32,12 +32,16 @@
 				</div>";
                 
                 if (isset($_POST['edit_profile_button'])) { 
+                	unset($_SESSION['DMUsername']);
                 	DisplayProfileEditor(); 
-                } else if (isset($_POST['DMSelector'])) {
-                	$_SESSION['DMUsername'] = $_POST['DMSelector'];
-                	DisplayDM();
-                } else {
+                } else if (isset($_POST['friend_list_button'])) {
                 	DisplayFriendList();
+                } else if (isset($_POST['DMSelector']) || isset($_SESSION['DMUsername'])) {
+                	if (isset($_POST['DMSelector'])) {
+                		$_SESSION['DMUsername'] = $_POST['DMSelector'];
+                	}
+
+                	DisplayDM();
                 }
 			echo "</div>
 		</div>";
